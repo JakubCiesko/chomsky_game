@@ -1,6 +1,5 @@
 import pyglet
 import random
-import math
 import physical_object
 
 pyglet.resource.path = ['game_resources']
@@ -16,7 +15,7 @@ def monsters(number_of_monsters, player_position):
     monsters_x_positions = random.sample(range(40,1200,40), number_of_monsters)
     monsters_y_positions = random.sample(range(40,600,40), number_of_monsters)
     for i in range(number_of_monsters):
-        monster_x,monster_y = player_position
+        monster_x, monster_y, _ = player_position
         while not physical_object.distance((monster_x,monster_y),player_position):
             monster_x = monsters_x_positions[i]
             monster_y = monsters_y_positions[i]
@@ -33,7 +32,7 @@ def obstacles(number_of_obstacles, player_position, monsters_positions):
     obstacles_x_positions = random.sample(range(40, 1200, 60), number_of_obstacles)
     obstacles_y_positions = random.sample(range(40, 600, 60), number_of_obstacles)
     for i in range(number_of_obstacles):
-        obstacle_x, obstacle_y = player_position
+        obstacle_x, obstacle_y, _ = player_position
 
         while not physical_object.distance((obstacle_x,obstacle_y), player_position):
             obstacle_x = obstacles_x_positions[i]

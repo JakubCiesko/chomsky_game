@@ -1,6 +1,7 @@
 import pyglet
 import load as load
 import player_object as player_object
+import os
 from pyglet.window import key
 
 
@@ -59,10 +60,11 @@ def handle_shot_collision(shots, game_objects):
 
 
 def load_game_screen_graphics():
-    back_ground = pyglet.image.load('background.png')
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    background_path = os.path.join(current_dir, 'game_resources/background.png')
+    back_ground = pyglet.image.load(background_path)
     back_ground_sprite = pyglet.sprite.Sprite(img=back_ground)
     return back_ground_sprite
-
 
 def remove_dead_objects(game_objects, shots):
     for obj in game_objects:
